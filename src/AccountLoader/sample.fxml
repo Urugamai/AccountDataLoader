@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+
+<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AccountLoader.Controller">
+   <columnConstraints>
+      <ColumnConstraints />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints />
+   </rowConstraints>
+   <children>
+      <Pane prefHeight="768.0" prefWidth="1024.0">
+         <children>
+            <ToolBar layoutY="-6.0" prefHeight="40.0" prefWidth="1024.0">
+              <items>
+                <Button fx:id="b_Frist" mnemonicParsing="false" text="Button1" />
+                  <Button mnemonicParsing="false" text="Button2" />
+                  <MenuButton mnemonicParsing="false" text="MenuButton1">
+                    <items>
+                      <MenuItem mnemonicParsing="false" text="Action 1" />
+                      <MenuItem mnemonicParsing="false" text="Action 2" />
+                    </items>
+                  </MenuButton>
+              </items>
+            </ToolBar>
+         </children></Pane>
+   </children>
+</GridPane>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_accountdataloader" default="compile.module.accountdataloader">
+  <dirname property="module.accountdataloader.basedir" file="${ant.file.module_accountdataloader}"/>
+  
+  <property name="module.jdk.home.accountdataloader" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.accountdataloader" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.accountdataloader" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.accountdataloader" value="-encoding UTF-8 -source 8 -target 8 ${compiler.args}"/>
+  
+  <property name="accountdataloader.output.dir" value="${module.accountdataloader.basedir}/out/production/AccountDataLoader"/>
+  <property name="accountdataloader.testoutput.dir" value="${module.accountdataloader.basedir}/out/test/AccountDataLoader"/>
+  
+  <path id="accountdataloader.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="accountdataloader.module.production.classpath">
+    <path refid="${module.jdk.classpath.accountdataloader}"/>
+  </path>
+  
+  <path id="accountdataloader.runtime.production.module.classpath">
+    <pathelement location="${accountdataloader.output.dir}"/>
+  </path>
+  
+  <path id="accountdataloader.module.classpath">
+    <path refid="${module.jdk.classpath.accountdataloader}"/>
+    <pathelement location="${accountdataloader.output.dir}"/>
+  </path>
+  
+  <path id="accountdataloader.runtime.module.classpath">
+    <pathelement location="${accountdataloader.testoutput.dir}"/>
+    <pathelement location="${accountdataloader.output.dir}"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.accountdataloader">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.accountdataloader">
+    <patternset refid="excluded.from.module.accountdataloader"/>
+  </patternset>
+  
+  <path id="accountdataloader.module.sourcepath">
+    <dirset dir="${module.accountdataloader.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.accountdataloader" depends="compile.module.accountdataloader.production,compile.module.accountdataloader.tests" description="Compile module AccountDataLoader"/>
+  
+  <target name="compile.module.accountdataloader.production" depends="register.custom.compilers" description="Compile module AccountDataLoader; production classes">
+    <mkdir dir="${accountdataloader.output.dir}"/>
+    <javac2 destdir="${accountdataloader.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.accountdataloader}/javac">
+      <compilerarg line="${compiler.args.accountdataloader}"/>
+      <bootclasspath refid="accountdataloader.module.bootclasspath"/>
+      <classpath refid="accountdataloader.module.production.classpath"/>
+      <src refid="accountdataloader.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.accountdataloader"/>
+    </javac2>
+    
+    <copy todir="${accountdataloader.output.dir}">
+      <fileset dir="${module.accountdataloader.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.accountdataloader.tests" depends="register.custom.compilers,compile.module.accountdataloader.production" description="compile module AccountDataLoader; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.accountdataloader" description="cleanup module">
+    <delete dir="${accountdataloader.output.dir}"/>
+    <delete dir="${accountdataloader.testoutput.dir}"/>
+  </target>
+</project>
