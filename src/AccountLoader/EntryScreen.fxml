@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
@@ -10,28 +11,45 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 
-<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AccountLoader.Controller">
+<GridPane alignment="center" hgap="10" prefHeight="200.0" prefWidth="600.0" vgap="10" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AccountLoader.mainController">
    <columnConstraints>
+      <ColumnConstraints />
       <ColumnConstraints />
    </columnConstraints>
    <rowConstraints>
       <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
    </rowConstraints>
    <children>
-      <Pane prefHeight="768.0" prefWidth="1024.0">
-         <children>
-            <ToolBar layoutY="-6.0" prefHeight="40.0" prefWidth="1024.0">
-              <items>
-                <Button fx:id="b_Frist" mnemonicParsing="false" text="YourData" />
-                  <Button mnemonicParsing="false" text="Button2" />
-                  <MenuButton mnemonicParsing="false" text="MenuButton1">
-                    <items>
-                      <MenuItem mnemonicParsing="false" text="Action 1" />
-                      <MenuItem mnemonicParsing="false" text="Action 2" />
-                    </items>
-                  </MenuButton>
-              </items>
-            </ToolBar>
-         </children></Pane>
+      <TabPane prefHeight="266.0" prefWidth="583.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Files">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="171.0" prefWidth="409.0">
+                     <children>
+                        <ToolBar prefHeight="40.0" prefWidth="583.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                          <items>
+                            <Button fx:id="b_YourData" mnemonicParsing="false" text="YourData" />
+                              <Button fx:id="b_BankData" mnemonicParsing="false" text="BankDataFile(s)" />
+                              <MenuButton fx:id="m_Actions" mnemonicParsing="false" text="Actions...">
+                                <items>
+                                  <MenuItem fx:id="i_Action1" mnemonicParsing="false" text="Action 1" />
+                                  <MenuItem fx:id="i_Action2" mnemonicParsing="false" text="Action 2" />
+                                </items>
+                              </MenuButton>
+                          </items>
+                        </ToolBar>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Accounts">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
    </children>
 </GridPane>
